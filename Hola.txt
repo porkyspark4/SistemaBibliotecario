@@ -2,4 +2,3 @@
 
 echo "hola";
 echo "Jelow Jelow";
-echo "UwU";
