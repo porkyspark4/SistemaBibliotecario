@@ -1,0 +1,13 @@
+header{
+    width: 100%;
+    height: 50px;
+    background-color: #445A67;
+    padding: 5px;
+    text-align: center;
+}
+h1{
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-family: 'Zen Kurenaido', sans-serif;
+}
