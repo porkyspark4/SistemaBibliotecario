@@ -2,6 +2,7 @@
 <?php
 $catalogos = isset($_GET['catalogo']) ? true : false;
 $procesos = isset($_GET['proceso']) ? true : false;
+$reportes = isset($_GET['reporte']) ? true : false;
 ?>
 <html>
     <head>
@@ -27,9 +28,10 @@ $procesos = isset($_GET['proceso']) ? true : false;
                 <?php
                 if ($catalogos) {
                     require 'catalogos/template.php';
-                }
-                else if($procesos){
+                } else if ($procesos) {
                     require 'procesos/procesosMenu.php';
+                } else if ($reportes) {
+                    require 'reportes/reportesMenu.php';
                 }
                 ?>
             </section>

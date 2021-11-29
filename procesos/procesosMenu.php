@@ -12,6 +12,9 @@ switch ($proceso) {
     case 'inventario':
         require 'procesos/inventario.php';
         break;
+    case 'altaLibro':
+        require 'procesos/altaLibro.php';
+        break;
     default:
         break;
 }
