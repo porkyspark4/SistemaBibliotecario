@@ -5,8 +5,8 @@ $msg = 'LIBRO INSERTADO CON EXITO';
 $titulo = $_POST['titulo'];
 $id_editorial = $_POST['id_editorial'];
 $isbn = $_POST['isbn'];
-$arr_autores = $_SESSION['arr_autores'];
-$arr_temas = $_SESSION['arr_temas'];
+$arr_autores = $_POST['arr_autores'];
+$arr_temas = $_POST['arr_temas'];
 
 //INSERT LIBRO
 $query = "INSERT INTO libro VALUES(0,'$isbn','$titulo','$id_editorial')";
@@ -23,9 +23,4 @@ foreach ($arr_temas as &$id_tema) {
     $query = "INSERT INTO libro_tema VALUES(0, '$id_libro','$id_tema')";
     $msg = mysqli_query($connection, $query) ? $msg : 'ERROR AL INSERTAR TEMA' ;
 }
-
-session_unset();
-unset($_POST['titulo']);
-unset($_POST['isbn']);
-unset($_POST['id_editorial']);
 ?>
