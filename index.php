@@ -15,6 +15,7 @@ $reportes = isset($_GET['reporte']) ? true : false;
         <link rel="stylesheet" type="text/css" href="style/inventario.css?ts=<?= time() ?>&quot;"/>
         <link rel="stylesheet" type="text/css" href="style/inputs.css?ts=<?= time() ?>&quot;"/>
         <link rel="stylesheet" type="text/css" href="style/session.css?ts=<?= time() ?>&quot;"/>
+        <link rel="stylesheet" type="text/css" href="style/reportes.css?ts=<?= time() ?>&quot;"/>
         <link href="https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap" rel="stylesheet">
         <title>Sistema Bibliotecario</title>
     </head>

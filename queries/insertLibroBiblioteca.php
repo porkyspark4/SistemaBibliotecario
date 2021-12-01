@@ -5,14 +5,13 @@ $id_libro = $_POST['id_libro'];
 $id_biblioteca = $_POST['id_biblioteca'];
 $cant = $_POST['cant'];
 ?>
-
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Biblioteca</th>
-        <th>Libro</th>
-        <th>Estatus</th>
-        <th>Codigo de barras</th>
+<table class="report_table">
+    <tr class="report_row">
+        <th class="report_header">ID</th>
+        <th class="report_header">Biblioteca</th>
+        <th class="report_header">Libro</th>
+        <th class="report_header">Estatus</th>
+        <th class="report_header">Codigo de barras</th>
     </tr>
     <?php
     for ($i = 0; $i < sizeof($id_libro); $i++) {
@@ -36,12 +35,15 @@ function echoLibroBiblioteca($id_libro_biblioteca) {
     $rows = mysqli_query($connection, $query);
     $row = mysqli_fetch_array($rows);
     ?>
-    <tr>
-        <td><?php echo $row['id_libro_biblioteca']; ?></td>
-        <td><?php echo $row['nom_biblioteca']; ?></td>
-        <td><?php echo $row['titulo']; ?></td>
-        <td><?php echo $row['des_estatus']; ?></td>
-        <td><?php generaCodBar(); ?></td>
+    <tr class="report_row">
+        <td class="report_data numeric"><?php echo $row['id_libro_biblioteca']; ?></td>
+        <td class="report_data text"><?php echo $row['nom_biblioteca']; ?></td>
+        <td class="report_data text"><?php echo $row['titulo']; ?></td>
+        <td class="report_data text"><?php echo $row['des_estatus']; ?></td>
+        <td class="report_data">
+            <img src="assets/images/barcode.png" width="150px"/>
+            <p class="code_bar"><?php generaCodBar(); ?></p>
+        </td>
     </tr>
     <?php
 }
