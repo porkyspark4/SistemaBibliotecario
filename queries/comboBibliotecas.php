@@ -1,5 +1,5 @@
 <?php
-require 'imports/dbConnection.php';
+//require 'imports/dbConnection.php';
 
 function comboBiblioteca($index) {
     global $connection;

@@ -3,3 +3,14 @@ div.session_bar{
     text-align: right;
 }
 
+div.sign_in_panel{
+    width: 50%;
+    padding: 60px;
+    margin-left: 25%;
+    margin-top: 60px;
+    border-radius: 10px;
+    background-color: white;
+    display: inline-block;
+    box-sizing: border-box;
+}
+
