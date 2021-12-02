@@ -39,7 +39,7 @@ $rows = mysqli_query($connection, $query);
     ?>
 </table>
 
-<form method="POST" action="reportes/printPDFglobal.php"><input type="submit" value="Imprimir PDF" name="submit"/></form>
+<form method="POST" action="reportes/printPDFglobal.php" target="_blank"><input type="submit" value="Imprimir PDF" name="submit"/></form>
 
 
 
