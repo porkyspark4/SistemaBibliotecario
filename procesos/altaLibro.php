@@ -1,7 +1,4 @@
 <?php
-session_start();
-//session_destroy();
-
 require 'imports/dbConnection.php';
 
 //SUBMIT
@@ -9,22 +6,17 @@ if (isset($_POST["submit"])){
     require 'queries/insertLibro.php';
 }
 
-//CREACION DE ARRAYS
-if (!isset($_SESSION["arr_autores"])) {
-    $_SESSION["arr_autores"] = array();
-}
-if (!isset($_SESSION["arr_temas"])) {
-    $_SESSION["arr_temas"] = array();
+//CREACION Y LLENADO ARRAY AUTORES
+$arr_autores = isset($_POST['arr_autores']) ? $_POST['arr_autores'] : array();
+if(isset($_POST["add_autor"])){
+    array_push($arr_autores, $_POST["id_autor"]);
 }
 
-//LLENADO DE ARRAYS
-if (isset($_POST["add_autor"])) {
-    array_push($_SESSION["arr_autores"], $_POST["id_autor"]);
+//CREACION Y LLENADO ARRAY TEMAS
+$arr_temas = isset($_POST['arr_temas']) ? $_POST['arr_temas'] : array();
+if(isset($_POST["add_tema"])){
+    array_push($arr_temas, $_POST["id_tema"]);
 }
-if (isset($_POST["add_tema"])) {
-    array_push($_SESSION["arr_temas"], $_POST["id_tema"]);
-}
-
 
 ?>
 <h2>Alta libro</h2>
@@ -49,7 +41,10 @@ if (isset($_POST["add_tema"])) {
             <td><input type="submit" name="add_autor" value="+"></td>
         </tr>
         <tr>
-            <td colspan="3"><textarea rows="5" cols="40" readonly><?php listAutores(); ?></textarea></td>
+            <td colspan="3">
+                <textarea rows="5" cols="40" readonly><?php listAutores(); ?></textarea>
+                <?php listHiddenAutores(); ?>
+            </td>
         </tr>
         <tr>
             <td>Tema:</td>
@@ -57,7 +52,10 @@ if (isset($_POST["add_tema"])) {
             <td><input type="submit" name="add_tema" value="+"></td>
         </tr>
         <tr>
-            <td colspan="3"><textarea rows="5" cols="40" readonly><?php listTemas(); ?></textarea></td>
+            <td colspan="3">
+                <textarea rows="5" cols="40" readonly><?php listTemas(); ?></textarea>
+                <?php listHiddenTemas(); ?>
+            </td>
         </tr>
         <tr>
             <td><input type="submit" name="submit" value="Agregar"></td>
@@ -71,16 +69,38 @@ echo isset($msg) ? $msg : '';
 <?php
 
 function listAutores() {
-    $arr_autores = $_SESSION['arr_autores'];
+    global $arr_autores;
+    
     foreach ($arr_autores as &$autor_id) {
         echo getAutorById($autor_id)."\n";
     }
 }
 
+function listHiddenAutores(){
+    global $arr_autores;
+    
+    foreach ($arr_autores as &$autor_id) {
+        ?>
+        <input type="hidden" name="arr_autores[]" value="<?php echo $autor_id; ?>">
+        <?php
+    }
+}
+
 function listTemas() {
-    $arr_temas = $_SESSION['arr_temas'];
+    global $arr_temas;
+    
     foreach ($arr_temas as &$tema_id) {
         echo getTemaById($tema_id)."\n";
+    }
+}
+
+function listHiddenTemas(){
+       global $arr_temas;
+    
+    foreach ($arr_temas as &$tema_id) {
+        ?>
+        <input type="hidden" name="arr_temas[]" value="<?php echo $tema_id; ?>">
+        <?php
     }
 }
 

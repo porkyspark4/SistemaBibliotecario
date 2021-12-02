@@ -6,3 +6,8 @@ div.mod_inventario {
     border-radius: 10px;
 }
 
+p.code_bar{
+    margin: 0;
+    text-align: center;
+}
+

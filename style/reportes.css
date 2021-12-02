@@ -1,0 +1,33 @@
+table.report_table {
+  border-collapse: collapse;
+  margin: auto;
+  overflow: scroll;
+}
+
+th.report_header {
+  background-color: #04AA6D;
+  color: white;
+  text-align: center;
+}
+
+th.report_header, td.report_data {
+  padding: 8px;
+}
+
+td.numeric {
+    text-align: right;
+}
+
+td.text {
+    text-align: left;
+}
+
+tr.report_row{
+    background-color: white;
+}
+
+tr.report_row:nth-child(even){
+    background-color: #f2f2f2
+}
+
+

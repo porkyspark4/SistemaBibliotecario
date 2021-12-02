@@ -64,5 +64,3 @@ while ($row = mysqli_fetch_array($rows)) {
 
 $pdf->Ln();
 $pdf->Output();
-
-  
