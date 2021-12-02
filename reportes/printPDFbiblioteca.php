@@ -66,4 +66,3 @@ require '../imports/dbConnection.php';
 //$pdf->Output();
 //
 //  
-echo $_POST['id_biblioteca'];
