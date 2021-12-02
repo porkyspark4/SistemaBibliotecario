@@ -17,6 +17,8 @@ $reportes = isset($_GET['reporte']) ? true : false;
         <link rel="stylesheet" type="text/css" href="style/session.css?ts=<?= time() ?>&quot;"/>
         <link rel="stylesheet" type="text/css" href="style/reportes.css?ts=<?= time() ?>&quot;"/>
         <link href="https://fonts.googleapis.com/css2?family=Zen+Kurenaido&display=swap" rel="stylesheet">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <title>Sistema Bibliotecario</title>
     </head>
     <body>
