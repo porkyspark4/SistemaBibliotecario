@@ -112,7 +112,7 @@ function listaLibrosBiblioteca() {
         ?>
         <input type="hidden" name="arr_id_libro_biblioteca[]" value="<?php echo $id; ?>">
         <input type="text" value="<?php
-        echo $libro['id_libro'] . " " . $libro['titulo'] . " | ";
+        echo $id . " " . $libro['titulo'] . " | ";
 
         while ($row = mysqli_fetch_array($autores)) {
             echo $row['nom_autor'] . ',';

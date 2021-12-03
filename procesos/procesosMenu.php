@@ -12,6 +12,7 @@ switch ($proceso) {
             <li><a href="index.php?proceso=altaLibro">Alta de libro</a></li>
             <li><a href="index.php?proceso=inventario">Inventario</a></li>
             <li><a href="index.php?proceso=prestamo">Prestamo</a></li>
+            <li><a href="index.php?proceso=devolucion">Devolución</a></li>
         </ul>
         <?php
         break;
@@ -24,7 +25,7 @@ switch ($proceso) {
     case 'prestamo':
         require 'procesos/prestamo.php';
         break;
-    case 'prestamo':
+    case 'devolucion':
         require 'procesos/devolucion.php';
         break;
     default:
