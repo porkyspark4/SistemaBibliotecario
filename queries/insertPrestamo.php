@@ -8,7 +8,7 @@ $id_usuario = $_POST['id_usuario'];
 $fecha_prestamo = date("Y-m-d");
 $fecha_lim_devolucion = date("Y-m-d", strtotime($fecha_prestamo . '+ 3 days'));
 
-$query = "INSERT INTO enc_prestamo VALUES(0,$id_empleado, $id_usuario, $fecha_prestamo, $fecha_lim_devolucion)";
+$query = "INSERT INTO enc_prestamo VALUES(0,$id_empleado, $id_usuario, '$fecha_prestamo', '$fecha_lim_devolucion')";
 if (mysqli_query($connection, $query)) {
     $id_enc_prestamo = mysqli_insert_id($connection);
     $empleado = getEmpleadoById($id_empleado);
@@ -73,7 +73,7 @@ if (mysqli_query($connection, $query)) {
     ?>
 </table>
 <form method="POST" action="reportes/printPDFprestamo.php" target="_blank">
-    <input type="hidden" name="enc_prestamo" value="<?php echo $id_enc_prestamo; ?>">
+    <input type="hidden" name="id_enc_prestamo" value="<?php echo $id_enc_prestamo; ?>">
     <input type="submit" value="Imprimir PDF" name="submit"/>
 </form>
 <?php
