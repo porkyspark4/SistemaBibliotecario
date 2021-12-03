@@ -1,6 +1,5 @@
 <?php
 require 'imports/dbConnection.php';
-$error_msg = "";
 
 date_default_timezone_set('America/Mexico_City');
 
@@ -17,8 +16,19 @@ if (mysqli_query($connection, $query)) {
     ?>
     <table class="report_table">
         <tr class="report_row">
+            <th class="report_header">Fecha prestamo</th>
+            <th class="report_header">Fecha límite de devolución</th>
+        </tr>
+        <tr class="report_row">
+            <td class="center"><?php echo $fecha_prestamo; ?></td>
+            <td class="center"><?php echo $fecha_lim_devolucion; ?></td>
+        </tr>
+    </table>
+    <br>
+    <table class="report_table">
+        <tr class="report_row">
             <th class="report_header">No. de Prestamo</th>
-            <td class="numeric"><?php echo $id_enc_prestamo; ?></td>
+            <td class="text"><?php echo $id_enc_prestamo; ?></td>
         </tr>
         <tr class="report_row">
             <th class="report_header">Empleado</th>
@@ -28,16 +38,7 @@ if (mysqli_query($connection, $query)) {
             <th class="report_header">Usuario</th>
             <td class="text"><?php echo $usuario['nom_usuario'] . " " . $usuario['ape_usuario']; ?></td>
         </tr>
-        <tr class="report_row">
-            <th class="report_header">Fecha prestamo</th>
-            <th class="report_header">Fecha límite de devolución</th>
-        </tr>
-        <tr class="report_row">
-            <td class="center"><?php echo $fecha_prestamo; ?></td>
-            <td class="center"><?php echo $fecha_lim_devolucion; ?></td>
-        </tr>
     </table>
-
     <br>
     <table class="report_table">
         <tr class="report_row">
@@ -59,29 +60,22 @@ if (mysqli_query($connection, $query)) {
         $libro = getLibroByIdLibroBiblioteca($id_libro_biblioteca);
         $autores = getAutoresLibro($libro['id_libro']);
 
-        if ($ejemplar['des_estatus'] == 'DISPONIBLE') {
-            $query = "INSERT INTO det_prestamo VALUES(0, $id_enc_prestamo, $id_libro_biblioteca)";
-
-            if (mysqli_query($connection, $query)) {
-                ?>
-                <tr class="report_row">
-                    <td class="numeric"><?php echo $id_libro_biblioteca; ?></td>
-                    <td class="text"><?php echo $libro['titulo']; ?></td>
-                    <td class="text"><?php echo $ejemplar['nom_biblioteca']; ?></td>
-                </tr>
-                <?php
-            }
-        } else {
-            $error_msg .= "El ejemplar $id_libro_biblioteca no ha sido devuelto<br>";
+        if (mysqli_query($connection, $query)) {
+            ?>
+            <tr class="report_row">
+                <td class="numeric"><?php echo $id_libro_biblioteca; ?></td>
+                <td class="text"><?php echo $libro['titulo']; ?></td>
+                <td class="text"><?php echo $ejemplar['nom_biblioteca']; ?></td>
+            </tr>
+            <?php
         }
     }
     ?>
 </table>
-    <form method="POST" action="reportes/printPDFprestamo.php" target="_blank">
-        <input type="hidden" name="enc_prestamo" value="<?php echo $id_enc_prestamo; ?>">
-        <input type="submit" value="Imprimir PDF" name="submit"/>
-    </form>
+<form method="POST" action="reportes/printPDFprestamo.php" target="_blank">
+    <input type="hidden" name="enc_prestamo" value="<?php echo $id_enc_prestamo; ?>">
+    <input type="submit" value="Imprimir PDF" name="submit"/>
+</form>
 <?php
-echo $error_msg;
 
 
