@@ -24,6 +24,9 @@ switch ($proceso) {
     case 'prestamo':
         require 'procesos/prestamo.php';
         break;
+    case 'prestamo':
+        require 'procesos/devolucion.php';
+        break;
     default:
         break;
 }
