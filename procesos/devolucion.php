@@ -18,7 +18,7 @@ if (isset($_POST['addLibro'])) {
     }
 }
 
-if (isset($_POST['prestamo'])) {
+if (isset($_POST['devolucion'])) {
     require 'queries/insertDevolucion.php';
 } else {
     ?>
@@ -78,5 +78,21 @@ function listaLibrosBiblioteca() {
         ?>" disabled>
                <?php
     }
+}
+
+function getLibroByIdLibroBiblioteca($id) {
+    global $connection;
+
+    $query = "SELECT * FROM libro NATURAL JOIN libro_biblioteca WHERE libro_biblioteca.id_libro_biblioteca = $id";
+    $rows = mysqli_query($connection, $query);
+
+    return mysqli_fetch_array($rows);
+}
+
+function getAutoresLibro($idLibro) {
+    global $connection;
+    $query = "SELECT autor.nom_autor  FROM libro_autor NATURAL JOIN autor WHERE id_libro = '$idLibro'";
+
+    return mysqli_query($connection, $query);
 }
 ?>

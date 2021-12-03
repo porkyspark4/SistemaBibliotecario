@@ -3,18 +3,18 @@ $error_msg = "";
 
 $arr_id_libro_biblioteca = isset($_POST['arr_id_libro_biblioteca']) ? $_POST['arr_id_libro_biblioteca'] : array();
 if (isset($_POST['addLibro'])) {
-    
+
     //Validacion [el ejemplar pertenece a biblioteca y esta disponible]
-    if(estaEnBiblioteca($_POST['id_libro_biblioteca'], $_SESSION['id_biblioteca'])){
-        if(estaDisponible($_POST['id_libro_biblioteca'])) {
+    if (estaEnBiblioteca($_POST['id_libro_biblioteca'], $_SESSION['id_biblioteca'])) {
+        if (estaDisponible($_POST['id_libro_biblioteca'])) {
             array_push($arr_id_libro_biblioteca, $_POST['id_libro_biblioteca']);
         } else {
-            $error_msg = "El ejemplar ".$_POST['id_libro_biblioteca']." no ha sido devuelto";
+            $error_msg = "El ejemplar " . $_POST['id_libro_biblioteca'] . " no ha sido devuelto";
         }
     } else {
         $biblioteca = getBibliotecaById($_SESSION['id_biblioteca'])['nom_biblioteca'];
-        
-        $error_msg = "El ejemplar ".$_POST['id_libro_biblioteca']." no pertenece a la biblioteca de ".$biblioteca;
+
+        $error_msg = "El ejemplar " . $_POST['id_libro_biblioteca'] . " no pertenece a la biblioteca de " . $biblioteca;
     }
 }
 
@@ -48,7 +48,7 @@ if (isset($_POST['prestamo'])) {
             <?php listaLibrosBiblioteca(); ?>
         </div>
         <p class="error"><?php echo $error_msg; ?></p>
-        <input type="submit" name="prestamo" value="Realizar Prestamo">
+        <input type="submit" name="prestamo" value="Realizar Prestamo" <?php echo sizeof($arr_id_libro_biblioteca) == 0 ? "disabled" : "" ?>>
     </form>
 
     <script>
@@ -83,23 +83,26 @@ if (isset($_POST['prestamo'])) {
     <?php
 }
 
-function estaEnBiblioteca($id_libro_biblioteca, $id_biblioteca){
+function estaEnBiblioteca($id_libro_biblioteca, $id_biblioteca) {
     global $connection;
-    
+
     $query = "SELECT id_biblioteca FROM libro_biblioteca WHERE id_libro_biblioteca = $id_libro_biblioteca";
     $rows = mysqli_query($connection, $query);
     $row = mysqli_fetch_array($rows);
-    
+
+    if ($row == null){
+        return false;
+    }
     return $row['id_biblioteca'] == $id_biblioteca;
 }
 
-function estaDisponible($id_libro_biblioteca){
+function estaDisponible($id_libro_biblioteca) {
     global $connection;
-    
+
     $query = "SELECT des_estatus FROM libro_biblioteca NATURAL JOIN estatus WHERE id_libro_biblioteca = $id_libro_biblioteca";
     $rows = mysqli_query($connection, $query);
     $row = mysqli_fetch_array($rows);
-    
+
     return $row['des_estatus'] == 'DISPONIBLE';
 }
 
@@ -118,7 +121,7 @@ function listaLibrosBiblioteca() {
             echo $row['nom_autor'] . ',';
         }
         ?>" disabled>
-               <?php
+        <?php
     }
 }
 
