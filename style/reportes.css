@@ -22,6 +22,10 @@ td.text {
     text-align: left;
 }
 
+td.center {
+    text-align: center;
+}
+
 tr.report_row{
     background-color: white;
 }
