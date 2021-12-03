@@ -43,7 +43,7 @@ if (mysqli_query($connection, $query)) {
         <tr class="report_row">
             <th class="report_header">Clave</th>
             <th class="report_header">Título</th>
-            <th class="report_header">Autores</th>
+            <th class="report_header">Biblioteca</th>
         </tr>
         <?php
     }
@@ -52,7 +52,7 @@ if (mysqli_query($connection, $query)) {
 
     foreach ($arr_id_libro_biblioteca as &$id_libro_biblioteca) {
         //Corroborar que el libro esta disponible
-        $query = "SELECT * FROM libro_biblioteca NATURAL JOIN estatus WHERE id_libro_biblioteca = $id_libro_biblioteca";
+        $query = "SELECT * FROM libro_biblioteca NATURAL JOIN estatus NATURAL JOIN biblioteca WHERE id_libro_biblioteca = $id_libro_biblioteca";
         $rows = mysqli_query($connection, $query);
         $ejemplar = mysqli_fetch_array($rows);
 
@@ -67,11 +67,7 @@ if (mysqli_query($connection, $query)) {
                 <tr class="report_row">
                     <td class="numeric"><?php echo $id_libro_biblioteca; ?></td>
                     <td class="text"><?php echo $libro['titulo']; ?></td>
-                    <td class="text"><?php
-                        while ($autor = mysqli_fetch_array($autores)) {
-                            echo $autor['nom_autor'] . ", ";
-                        }
-                        ?></td>
+                    <td class="text"><?php echo $ejemplar['nom_biblioteca']; ?></td>
                 </tr>
                 <?php
             }
