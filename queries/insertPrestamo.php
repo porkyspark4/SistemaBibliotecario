@@ -75,7 +75,7 @@ if (mysqli_query($connection, $query)) {
     ?>
 </table>
 <form method="POST" action="reportes/printPDFprestamo.php" target="_blank">
-    <input type="hidden" name="enc_prestamo" value="<?php echo $id_enc_prestamo; ?>">
+    <input type="hidden" name="id_enc_prestamo" value="<?php echo $id_enc_prestamo; ?>">
     <input type="submit" value="Imprimir PDF" name="submit"/>
 </form>
 <?php
