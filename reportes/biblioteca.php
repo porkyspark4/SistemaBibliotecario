@@ -45,8 +45,8 @@ $rows = mysqli_query($connection, $query);
             }
         } else if ($filter == "todos") {
             ?>
-            
             <?php
+            require 'queries/selectReporteBibliotecaTodos.php';
         }
     }
     ?>

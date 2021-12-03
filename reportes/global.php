@@ -7,20 +7,20 @@ $rows = mysqli_query($connection, $query);
 ?>
 
 <h1>Reporte Global</h1>
-<table>
-    <tr>
-        <th>Biblioteca</th>
-        <th>Titulos</th>
-        <th>Ejemplares</th>
+<table class="report_table">
+    <tr class="report_row">
+        <th class="report_header">Biblioteca</th>
+        <th class="report_header">Titulos</th>
+        <th class="report_header">Ejemplares</th>
 
     </tr>
     <?php
     while ($row = mysqli_fetch_array($rows)) {
         ?>
-        <tr>
-            <td><?php echo $row['nom_biblioteca']; ?></td>
-            <td><?php echo $row['titulos']; ?></td>
-            <td><?php echo $row['ejemplares']; ?></td>
+        <tr class="report_row">
+            <td class="text"><?php echo $row['nom_biblioteca']; ?></td>
+            <td class="numeric"><?php echo $row['titulos']; ?></td>
+            <td class="numeric"><?php echo $row['ejemplares']; ?></td>
         </tr>
         <?php
     }
@@ -30,16 +30,18 @@ $rows = mysqli_query($connection, $query);
     $rows = mysqli_query($connection, $query);
     $row = mysqli_fetch_array($rows);
     ?> 
-    <tr>
-        <td><b>Total</b></td>
-        <td><?php echo $row[0]; ?></td>
-        <td><?php echo $row[1]; ?></td>
+    <tr  class="report_row">
+        <td class="text"><b>Total</b></td>
+        <td class="numeric"><?php echo $row[0]; ?></td>
+        <td class="numeric"><?php echo $row[1]; ?></td>
     </tr>
     <?php
     ?>
 </table>
 
-<form method="POST" action="reportes/printPDFglobal.php" target="_blank"><input type="submit" value="Imprimir PDF" name="submit"/></form>
+<form method="POST" action="reportes/printPDFglobal.php" target="_blank">
+    <input type="submit" value="Imprimir PDF" name="submit"/>
+</form>
 
 
 

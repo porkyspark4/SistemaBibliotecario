@@ -24,17 +24,6 @@ $editorial = mysqli_fetch_array($result);
                         </td>
                     </tr>
                     <div class="Save"><input  class="BtnSave" type="submit" value="Guardar" ></div>
-                    <?php
-                    if (isset($_GET['error'])) {
-                        if ($_GET['error'] == 0) {
-                            ?>
-                            <p style="color: greenyellow;"> Eliminacion Exitosa </p> 
-                        <?php } else { ?>
-                            <p style="color: red;"> Eliminacion Fallida </p>   
-                            <?php
-                        }
-                    }
-                    ?>
             </form>    
         </div>
     </div>
