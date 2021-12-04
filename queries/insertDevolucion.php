@@ -47,6 +47,10 @@ $arr_id_libro_biblioteca = $_POST['arr_id_libro_biblioteca'];
     }
     ?>
 </table>
+<form method="POST" action="reportes/printPDFdevolucion.php" target="_blank">
+    <input type="hidden" name="id_det_prestamo" value="<?php echo $id_det_prestamo; ?>">
+    <input type="submit" value="Imprimir PDF" name="submit"/>
+</form>
 
 
 

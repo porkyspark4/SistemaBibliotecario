@@ -15,6 +15,9 @@ switch ($reporte) {
     case 'biblioteca':
         require 'reportes/biblioteca.php';
         break;
+    case 'prestamos':
+        require 'reportes/biblioteca.php';
+        break;
     default:
         break;
 }

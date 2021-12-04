@@ -15,7 +15,7 @@ if (isset($_POST['submit'])) {
         $password = password_hash($password, PASSWORD_DEFAULT);
 
         $query = "INSERT INTO empleado VALUES(0, '$ape_empleado', '$nom_empleado', '$password')";
-        echo $query;
+//        echo $query;
         if (mysqli_query($connection, $query)) {
             $success = true;
         } else {
