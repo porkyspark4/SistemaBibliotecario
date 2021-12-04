@@ -6,6 +6,7 @@ switch ($reporte) {
         <ul>
             <li><a href="index.php?reporte=global">Reporte Global</a></li>
             <li><a href="index.php?reporte=biblioteca">Reporte por Biblioteca</a></li>
+            <li><a href="index.php?reporte=null&prestamo=menu">Reportes Prestamos</a></li>
         </ul>
         <?php
         break;
@@ -15,10 +16,10 @@ switch ($reporte) {
     case 'biblioteca':
         require 'reportes/biblioteca.php';
         break;
-    case 'prestamos':
-        require 'reportes/biblioteca.php';
-        break;
     default:
         break;
+}
+if (isset($_GET['prestamo'])) {
+    require 'reportes/prestamosMenu.php';
 }
 ?>

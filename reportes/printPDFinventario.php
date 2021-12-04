@@ -42,7 +42,7 @@ $pdf->Ln();
 
 $arr_id_libro_biblioteca = $_POST['id_libro_biblioteca'];
 $arr_cod_bar = $_POST['cod_bar'];
-$img = "../assets/images/barcode.png";
+$img = "../assets/images/codigo.png";
 
 for ($i = 0; $i < sizeof($arr_id_libro_biblioteca); $i++) {
     $query = "SELECT libro_biblioteca.id_libro_biblioteca, biblioteca.nom_biblioteca, libro.titulo, estatus.des_estatus "

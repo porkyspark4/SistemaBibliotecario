@@ -27,7 +27,7 @@ $arr_id_libro_biblioteca = $_POST['arr_id_libro_biblioteca'];
 
         //Inserta devolucion
         $query = "INSERT INTO devolucion VALUES(0, '$fecha_devolucion', $id_det_prestamo, $id_empleado)";
-
+        echo $query;
         if (mysqli_query($connection, $query)) {
             $libro = getLibroByIdLibroBiblioteca($id_libro_biblioteca);
             $autores = getAutoresLibro($libro['id_libro']);
