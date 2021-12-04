@@ -1,24 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
-    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/xampp/htdocs/SistemaBibliotecario/queries/comboBibliotecas.php</file>
-<<<<<<< HEAD
-            <file>file:/C:/xampp/htdocs/SistemaBibliotecario/reportes/biblioteca.php</file>
-            <file>file:/C:/xampp/htdocs/SistemaBibliotecario/reportes/printPDFbiblioteca.php</file>
-            <file>file:/C:/xampp/htdocs/SistemaBibliotecario/reportes/global.php</file>
-=======
-            <file>file:/C:/xampp/htdocs/SistemaBibliotecario/imports/session.php</file>
-            <file>file:/C:/xampp/htdocs/SistemaBibliotecario/queries/comboLibros.php</file>
-            <file>file:/C:/xampp/htdocs/SistemaBibliotecario/index.php</file>
-            <file>file:/C:/xampp/htdocs/SistemaBibliotecario/queries/insertLibroBiblioteca.php</file>
-            <file>file:/C:/xampp/htdocs/SistemaBibliotecario/style/session.css</file>
-            <file>file:/C:/xampp/htdocs/SistemaBibliotecario/style/inputs.css</file>
-            <file>file:/C:/xampp/htdocs/SistemaBibliotecario/style/reportes.css</file>
-            <file>file:/C:/xampp/htdocs/SistemaBibliotecario/style/inventario.css</file>
->>>>>>> fd6fd28d9a45b97d92044905f2e63a7b91f08c8c
-            <file>file:/C:/xampp/htdocs/SistemaBibliotecario/procesos/inventario.php</file>
-        </group>
-    </open-files>
 </project-private>
