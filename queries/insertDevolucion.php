@@ -19,7 +19,7 @@ $arr_id_libro_biblioteca = $_POST['arr_id_libro_biblioteca'];
         //Obtener det_prestamo por id_libro biblioteca (Se debe considerar el prestamo más reciente)
         $query = "SELECT det_prestamo.id_det_prestamo "
                 . "FROM det_prestamo NATURAL JOIN enc_prestamo "
-                . "WHERE id_libro_biblioteca = $id_libro_biblioteca ORDER BY fecha_prestamo DESC LIMIT 1";
+                . "WHERE id_libro_biblioteca = $id_libro_biblioteca ORDER BY fecha_prestamo DESC, id_det_prestamo DESC LIMIT 1";
         $rows = mysqli_query($connection, $query);
         $row = mysqli_fetch_array($rows);
 
@@ -28,6 +28,7 @@ $arr_id_libro_biblioteca = $_POST['arr_id_libro_biblioteca'];
         //Inserta devolucion
         $query = "INSERT INTO devolucion VALUES(0, '$fecha_devolucion', $id_det_prestamo, $id_empleado)";
         echo $query;
+
         if (mysqli_query($connection, $query)) {
             $libro = getLibroByIdLibroBiblioteca($id_libro_biblioteca);
             $autores = getAutoresLibro($libro['id_libro']);
